@@ -9,7 +9,7 @@ sharedMappings.register(
 
 module.exports = {
   output: {
-    uniqueName: "app2",
+    uniqueName: "app3",
     publicPath: "auto"
   },
   optimization: {
@@ -24,11 +24,10 @@ module.exports = {
     new ModuleFederationPlugin({
       
         // For remotes (please adjust)
-        name: "app2",
+        name: "app3",
         filename: "remoteEntry.js",
         exposes: {
-            './app2': './src/app/child/child.module.ts',
-            './Comp2': './src/app/child2/child2.module.ts',
+            './app3': './src/app/child/child.module.ts',
         },        
         
         // For hosts (please adjust)

@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LookupService } from './microfrontend';
 
 @NgModule({
   declarations: [
@@ -13,7 +12,7 @@ import { LookupService } from './microfrontend';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [LookupService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
