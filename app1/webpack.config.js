@@ -5,7 +5,7 @@ const path = require("path");
 const sharedMappings = new mf.SharedMappings();
 sharedMappings.register(
   path.join(__dirname, 'tsconfig.json'),
-  [/* mapped paths to share */]);
+  []);
 
 module.exports = {
   output: {
@@ -14,7 +14,7 @@ module.exports = {
   },
   optimization: {
     runtimeChunk: false
-  },   
+  },
   resolve: {
     alias: {
       ...sharedMappings.getAliases(),
@@ -22,29 +22,30 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      
-        // For remotes (please adjust)
-        // name: "app1",
-        // filename: "remoteEntry.js",
-        // exposes: {
-        //     './Component': './/src/app/app.component.ts',
-        // },        
-        
-        // For hosts (please adjust)
-        remotes: {
-            "app2": "app2@http://localhost:3000/remoteEntry.js",
 
-        },
+      // For remotes (please adjust)
+      // name: "app1",
+      // filename: "remoteEntry.js",
+      // exposes: {
+      //     './Component': './/src/app/app.component.ts',
+      // },        
 
-        shared: {
-          "@angular/core": { singleton: true, strictVersion: true }, 
-          "@angular/common": { singleton: true, strictVersion: true }, 
-          "@angular/common/http": { singleton: true, strictVersion: true }, 
-          "@angular/router": { singleton: true, strictVersion: true },
+      // For hosts (please adjust)
+      remotes: {
+        "app2": "app2@http://localhost:3000/remoteEntry.js",
 
-          ...sharedMappings.getDescriptors()
-        }
-        
+      },
+
+      shared: {
+        "@angular/core": { singleton: true, strictVersion: true },
+        "@angular/common": { singleton: true, strictVersion: true },
+        "@angular/common/http": { singleton: true, strictVersion: true },
+        "@angular/router": { singleton: true, strictVersion: true },
+        "shared-lib": { singleton: true, strictVersion: false },
+
+        ...sharedMappings.getDescriptors()
+      }
+
     }),
     sharedMappings.getPlugin()
   ],

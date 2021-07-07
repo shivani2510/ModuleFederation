@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedLibService } from 'shared-lib';
 
 @Component({
   selector: 'app-comp1',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Comp1Component implements OnInit {
 
-  constructor() { }
+  name: any;
+  constructor(private dataService: SharedLibService) { }
 
   ngOnInit(): void {
+    this.name = this.dataService.getData();
+    this.dataService.dataObserver().subscribe((res)=>{
+      alert("sdfsd");
+    });
+  }
+  getData() {
+    this.name = this.dataService.getData();
+
   }
 
 }

@@ -1,5 +1,8 @@
 <div class="container">Main App</div>
-
+<div>
+    <input placeholder="Enter Name" [(ngModel)]="name">
+    <button type="submit" (click)="setName()">Submit</button>
+</div>
 
 <ul style="display: flex;">
     <li><a routerLink="/">Home</a></li>

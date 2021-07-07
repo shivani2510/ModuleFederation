@@ -1,6 +1,7 @@
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { SharedLibService } from 'shared-lib';
 import { LookupService } from './microfrontend';
 
 @Component({
@@ -11,7 +12,9 @@ import { LookupService } from './microfrontend';
 export class AppComponent {
   title = 'app1';
   microfrontends: any[] = [];
-  constructor(private router: Router, private lookupService: LookupService) {
+  name: any;
+  constructor(private router: Router, private lookupService: LookupService,
+    private sharedLibService: SharedLibService) {
 
   }
   ngOnInit() {
@@ -28,5 +31,9 @@ export class AppComponent {
     }));
 
     return lazyRoutes;
+  }
+
+  setName() {
+    this.sharedLibService.setData(this.name);
   }
 }

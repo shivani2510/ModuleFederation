@@ -5,7 +5,7 @@ const path = require("path");
 const sharedMappings = new mf.SharedMappings();
 sharedMappings.register(
   path.join(__dirname, 'tsconfig.json'),
-  [/* mapped paths to share */]);
+  []);
 
 module.exports = {
   output: {
@@ -42,6 +42,8 @@ module.exports = {
           "@angular/common": { singleton: true, strictVersion: true }, 
           "@angular/common/http": { singleton: true, strictVersion: true }, 
           "@angular/router": { singleton: true, strictVersion: true },
+          "shared-lib": { singleton: true, strictVersion: false },
+
 
           ...sharedMappings.getDescriptors()
         }
