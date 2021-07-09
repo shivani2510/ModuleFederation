@@ -13,8 +13,8 @@ export class Comp1Component implements OnInit {
 
   ngOnInit(): void {
     this.name = this.dataService.getData();
-    this.dataService.dataObserver().subscribe((res)=>{
-      alert("sdfsd");
+    this.dataService.dataObserver.subscribe((res) => {
+      this.name=res;
     });
   }
   getData() {

@@ -4,11 +4,11 @@ import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class   {
+export class SharedLibService {
 
   sharedData = {};
-  dataSubject = new Subject<any>();
-  dataObserver = this.dataSubject.asObservable;
+  dataSubject = new Subject();
+  dataObserver = this.dataSubject.asObservable();
 
   constructor() { }
   setData(data: any) {
